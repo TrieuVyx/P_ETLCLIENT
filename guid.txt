@@ -1,0 +1,2 @@
+npm i
+npm i axios bcrypt body-parser concurrently cors dotenv express express-handlebars mongoose
