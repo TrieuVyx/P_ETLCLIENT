@@ -1,8 +1,9 @@
 import {Layout} from "antd"
 import Login from "./form/login"
+import { Toaster} from 'react-hot-toast'
 
 
-const {Header, Content, Footer} = Layout
+const { Content} = Layout
 
 const loginStylePage = {
     display:"flex",
@@ -18,11 +19,15 @@ const contentStyle = {
     justifyContent:"center",
 }
 
-
+const layoutStyle ={
+    background: "white"
+}
 export default function LoginPage(){
     return (
         <div className="container" style={loginStylePage}>
-            <Layout>
+            <Toaster position='top-right' reverseOrder={false}></Toaster>
+
+            <Layout style={layoutStyle}>
                 <Content style={contentStyle}>
                     <Login/>
                 </Content>

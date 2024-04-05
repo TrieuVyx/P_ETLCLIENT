@@ -17,9 +17,6 @@ export default function Email() {
                     </div>
                         <input type="submit" value={"submit"} className="rounded border-0" />
                 </form>
-
-
-
             </div> */}
             <div class="container text-black ">
                 <form action="http://localhost:8081/send-email" method="post" >

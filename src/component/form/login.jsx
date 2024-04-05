@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
 import { Button, Checkbox, Form, Input } from "antd"
-// import axios from 'axios'
 import MidLogin from './midLogin'
+import { Toaster} from 'react-hot-toast'
 
 const formStyle = {
-    maxWidth: 600,
+    maxWidth: 500,
+    background:"#f5f5f5",
+    borderRadius:"10px",
+    padding :"20px"
 }
-
-
-
+const formCenterStyle ={
+    display:"flex",
+    alignItems:"center",
+    justifyContent:"center"
+}
 export default function Login() {
 
     const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const [passWord, setPassword] = useState("")
         
     return (
 
@@ -28,14 +33,14 @@ export default function Login() {
             initialValues={{
                 remember: true,
             }}
+            method='POST'
             onFinish={()=>{
-                MidLogin(email,password)
-
+                MidLogin(email,passWord)
             }}
             // onFinishFailed={onFinishFailed}
-            autoComplete="off"
         >
             <h1>Login</h1>
+            <Toaster position='top-right' reverseOrder={false}></Toaster>
             <Form.Item
                 label="Email"
                 name="email"
@@ -53,15 +58,15 @@ export default function Login() {
 
             <Form.Item
                 label="Password"
-                name="password"
+                name="passWord"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your password!',
+                        message: 'Please input your passWord!',
                     }
                 ]}
             >
-                <Input.Password name="password" value={password} onChange={(e)=>{
+                <Input.Password name="passWord" value={passWord} onChange={(e)=>{
                     setPassword(e.target.value)
                 }}/>
             </Form.Item>
@@ -69,19 +74,15 @@ export default function Login() {
             <Form.Item
                 name="remember"
                 valuePropName="checked"
+                style={formCenterStyle}
                 wrapperCol={{
-                    offset: 8,
-                    span: 16,
                 }}
             >
                 <Checkbox>Remember me</Checkbox>
             </Form.Item>
 
             <Form.Item
-                wrapperCol={{
-                    offset: 8,
-                    span: 16,
-                }}
+                style={formCenterStyle}
             >
                 <Button type="primary" htmlType="submit">
                     Submit
